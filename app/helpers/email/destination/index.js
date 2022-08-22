@@ -40,18 +40,9 @@ const getOperatorsEmails = async (emailPreferencesPayload, onlySuperAdmin) => {
     return koUsers.map(({ email }) => email);
 };
 
-const getSPUsersEmailsForTemperatureAlerts = async (serviceProviderId) => ({
-    spCriticalTemperatureAlertEmails: await getSPUsersEmails(serviceProviderId, { criticalTemperatureAlerts: true }, [USERS_ROLES.accountHolder.name, USERS_ROLES.admin.name]),
-});
-
 const getSPUsersEmailsForConnectionAlerts = async (serviceProviderId) => ({
     spLostConnectionEmails: await getSPUsersEmails(serviceProviderId, { lostConnectionAlerts: true }, [USERS_ROLES.accountHolder.name, USERS_ROLES.admin.name]),
     spCriticalConnectionEmails: await getSPUsersEmails(serviceProviderId, { criticalConnectionAlerts: true }, [USERS_ROLES.accountHolder.name, USERS_ROLES.admin.name]),
-});
-
-const getKOEmailsForTemperatureAlerts = async () => ({
-    koTemperatureEmails: await getOperatorsEmails({ temperatureAlerts: true }),
-    koCriticalTemperatureEmails: await getOperatorsEmails({ criticalTemperatureAlerts: true })
 });
 
 const getKOEmailsForConnectionAlerts = async () => ({
@@ -61,8 +52,6 @@ const getKOEmailsForConnectionAlerts = async () => ({
 });
 
 module.exports = {
-    getSPUsersEmailsForTemperatureAlerts,
     getSPUsersEmailsForConnectionAlerts,
-    getKOEmailsForTemperatureAlerts,
     getKOEmailsForConnectionAlerts
 };

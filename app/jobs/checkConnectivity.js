@@ -7,7 +7,7 @@ const {
 
 const logger = require('app/helpers/logger');
 
-const { checkTemperatureLog, checkSocketConnection } = require('app/helpers/kiosk/common');
+const { checkSocketConnection } = require('app/helpers/kiosk/common');
 const ACTIVE_STATUS = 'active';
 
 const Got = require('got');
@@ -59,7 +59,7 @@ module.exports.checkConnectivity = async () => {
     const kiosks = await Kiosks.findAll({ where: { status: ACTIVE_STATUS } });
     if (kiosks && Array.isArray(kiosks)) {
         for (const kiosk of kiosks) {
-            const { ip, id, temperatureEmail, connectionEmail, displayName, serviceProviderId, useSocket, isCoffeeMachine } = kiosk;
+            const { ip, id, connectionEmail, displayName, serviceProviderId, useSocket, isCoffeeMachine } = kiosk;
             if (isCoffeeMachine) {
                 continue;
             }
@@ -67,9 +67,6 @@ module.exports.checkConnectivity = async () => {
                 await checkSocketConnection(id, connectionEmail, displayName, serviceProviderId);
             } else if (ip) {
                 await getKiosksStatus(ip, id);
-            }
-            if (ip || useSocket) {
-                await checkTemperatureLog(id, temperatureEmail, displayName, serviceProviderId);
             }
         }
     }
