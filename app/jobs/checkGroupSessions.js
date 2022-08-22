@@ -66,8 +66,7 @@ const checkGroupSessions = async () => {
     if (!groupSessions?.length) {
         return;
     }
-    for (let i = 0; i < groupSessions.length; i++) {
-        const groupSession = groupSessions[i];
+    for (const groupSession of groupSessions) {
         const updatedData = {};
         if (groupSession.videoId) {
             const clipData = await getGroupSessionClip(groupSession);
