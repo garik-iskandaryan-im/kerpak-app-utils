@@ -13,7 +13,7 @@ const jobs = [
         callback: sendNotificationReadyPreOrder
     },
     {
-        schedule: '*/1 * * * *',
+        schedule: '*/5 * * * *',
         callback: checkGroupSessions
     }
 ];

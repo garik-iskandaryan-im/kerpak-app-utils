@@ -32,7 +32,6 @@ module.exports = {
     },
     ivideon: {
         URL: process.env.IVIDEON_URL,
-        IVIDEON_OAUTH_URL: process.env.IVIDEON_OAUTH_URL
     },
     firebase: {
         key: process.env.FIREBASE_KEY

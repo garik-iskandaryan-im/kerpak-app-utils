@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 app.use('/api', routes);
 
 // error handler
-app.use(function (error, req, res, next) {
+app.use((error, req, res, next) => {
     logger.error({ error }, 'Error');
     res.status(error.status || 500).json({ error });
 });

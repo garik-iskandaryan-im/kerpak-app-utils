@@ -34,7 +34,7 @@ const sendEmail = async (emails, bccEmails, subject, body_text, sender, isTempla
                 }
             }
         };
-        ses.sendEmail(params, function (err, data) {
+        ses.sendEmail(params, (err, data) => {
             if (err) {
                 log.error(err, 'aws::email::sendEmail::err');
             } else {
