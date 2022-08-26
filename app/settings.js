@@ -40,4 +40,8 @@ module.exports = {
         URL: process.env.AI_URL,
         TRY_GET_VIDEO_COUNT: process.env.TRY_GET_VIDEO_COUNT || 1,
     },
+    kerpakUtilsClient: {
+        privateKeyPath: process.env.KERPAK_UTILS_CLIENT_PRIVATE_KEY_PATH,
+        secret: process.env.KERPAK_UTILS_CLIENT_SECRET,
+    },
 };
